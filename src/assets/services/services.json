@@ -1,0 +1,462 @@
+[
+    {
+        "id": 1,
+        "name": "Laundry Express",
+        "category": "Home Service",
+        "price": 25000,
+        "rating": 4.5,
+        "image": "https://picsum.photos/seed/laundry/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Melati No. 5",
+            "postalCode": "12345"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "24 Hours",
+            "staffCount": 3
+        },
+        "reviews": {
+            "count": 120,
+            "lastReview": "Fast service!",
+            "averageStars": 4.5
+        }
+    },
+    {
+        "id": 2,
+        "name": "AC Repair",
+        "category": "Repair",
+        "price": 75000,
+        "rating": 4.7,
+        "image": "https://picsum.photos/seed/ac/400/300",
+        "location": {
+            "city": "Bandung",
+            "address": "Jl. Dago No. 10",
+            "postalCode": "40135"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "2 Hours",
+            "staffCount": 2
+        },
+        "reviews": {
+            "count": 85,
+            "lastReview": "Very professional.",
+            "averageStars": 4.7
+        }
+    },
+    {
+        "id": 3,
+        "name": "Cleaning Service",
+        "category": "Home Service",
+        "price": 100000,
+        "rating": 4.8,
+        "image": "https://picsum.photos/seed/cleaning/400/300",
+        "location": {
+            "city": "Surabaya",
+            "address": "Jl. Gubeng No. 12",
+            "postalCode": "60281"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "4 Hours",
+            "staffCount": 4
+        },
+        "reviews": {
+            "count": 200,
+            "lastReview": "Clean and tidy.",
+            "averageStars": 4.8
+        }
+    },
+    {
+        "id": 4,
+        "name": "Laptop Repair",
+        "category": "Repair",
+        "price": 150000,
+        "rating": 4.6,
+        "image": "https://picsum.photos/seed/laptop/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Sudirman No. 20",
+            "postalCode": "10210"
+        },
+        "details": {
+            "availability": "Busy",
+            "duration": "3 Days",
+            "staffCount": 5
+        },
+        "reviews": {
+            "count": 50,
+            "lastReview": "Fixed perfectly.",
+            "averageStars": 4.6
+        }
+    },
+    {
+        "id": 5,
+        "name": "Car Wash",
+        "category": "Automotive",
+        "price": 50000,
+        "rating": 4.4,
+        "image": "https://picsum.photos/seed/carwash/400/300",
+        "location": {
+            "city": "Bandung",
+            "address": "Jl. Pasteur No. 5",
+            "postalCode": "40161"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "1 Hour",
+            "staffCount": 2
+        },
+        "reviews": {
+            "count": 150,
+            "lastReview": "Sparkling clean.",
+            "averageStars": 4.4
+        }
+    },
+    {
+        "id": 6,
+        "name": "Salon Service",
+        "category": "Beauty",
+        "price": 120000,
+        "rating": 4.9,
+        "image": "https://picsum.photos/seed/salon/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Senopati No. 8",
+            "postalCode": "12190"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "2 Hours",
+            "staffCount": 10
+        },
+        "reviews": {
+            "count": 300,
+            "lastReview": "Great haircut!",
+            "averageStars": 4.9
+        }
+    },
+    {
+        "id": 7,
+        "name": "Massage Therapy",
+        "category": "Health",
+        "price": 90000,
+        "rating": 4.7,
+        "image": "https://picsum.photos/seed/massage/400/300",
+        "location": {
+            "city": "Surabaya",
+            "address": "Jl. Manyar No. 15",
+            "postalCode": "60118"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "90 Mins",
+            "staffCount": 6
+        },
+        "reviews": {
+            "count": 110,
+            "lastReview": "Relaxing.",
+            "averageStars": 4.7
+        }
+    },
+    {
+        "id": 8,
+        "name": "Electric Repair",
+        "category": "Repair",
+        "price": 80000,
+        "rating": 4.5,
+        "image": "https://picsum.photos/seed/electric/400/300",
+        "location": {
+            "city": "Bandung",
+            "address": "Jl. Antapani No. 3",
+            "postalCode": "40291"
+        },
+        "details": {
+            "availability": "Busy",
+            "duration": "1 Day",
+            "staffCount": 3
+        },
+        "reviews": {
+            "count": 40,
+            "lastReview": "Solved my issue.",
+            "averageStars": 4.5
+        }
+    },
+    {
+        "id": 9,
+        "name": "Plumbing",
+        "category": "Home Service",
+        "price": 70000,
+        "rating": 4.3,
+        "image": "https://picsum.photos/seed/plumbing/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Kebon Jeruk No. 2",
+            "postalCode": "11530"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "3 Hours",
+            "staffCount": 2
+        },
+        "reviews": {
+            "count": 60,
+            "lastReview": "No more leaks.",
+            "averageStars": 4.3
+        }
+    },
+    {
+        "id": 10,
+        "name": "Gardening",
+        "category": "Home Service",
+        "price": 60000,
+        "rating": 4.6,
+        "image": "https://picsum.photos/seed/gardening/400/300",
+        "location": {
+            "city": "Surabaya",
+            "address": "Jl. Dharmahusada No. 11",
+            "postalCode": "60285"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "5 Hours",
+            "staffCount": 3
+        },
+        "reviews": {
+            "count": 75,
+            "lastReview": "Beautiful garden.",
+            "averageStars": 4.6
+        }
+    },
+    {
+        "id": 11,
+        "name": "Bike Repair",
+        "category": "Automotive",
+        "price": 40000,
+        "rating": 4.5,
+        "image": "https://picsum.photos/seed/bike/400/300",
+        "location": {
+            "city": "Bandung",
+            "address": "Jl. Buah Batu No. 22",
+            "postalCode": "40265"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "2 Hours",
+            "staffCount": 2
+        },
+        "reviews": {
+            "count": 90,
+            "lastReview": "Fast and cheap.",
+            "averageStars": 4.5
+        }
+    },
+    {
+        "id": 12,
+        "name": "Makeup Artist",
+        "category": "Beauty",
+        "price": 200000,
+        "rating": 4.8,
+        "image": "https://picsum.photos/seed/makeup/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Kemang No. 3",
+            "postalCode": "12730"
+        },
+        "details": {
+            "availability": "Busy",
+            "duration": "3 Hours",
+            "staffCount": 1
+        },
+        "reviews": {
+            "count": 130,
+            "lastReview": "Stunning look.",
+            "averageStars": 4.8
+        }
+    },
+    {
+        "id": 13,
+        "name": "Personal Trainer",
+        "category": "Health",
+        "price": 150000,
+        "rating": 4.9,
+        "image": "https://picsum.photos/seed/gym/400/300",
+        "location": {
+            "city": "Surabaya",
+            "address": "Jl. Ahmad Yani No. 50",
+            "postalCode": "60235"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "1 Hour",
+            "staffCount": 1
+        },
+        "reviews": {
+            "count": 250,
+            "lastReview": "Life changing.",
+            "averageStars": 4.9
+        }
+    },
+    {
+        "id": 14,
+        "name": "TV Repair",
+        "category": "Repair",
+        "price": 90000,
+        "rating": 4.4,
+        "image": "https://picsum.photos/seed/tv/400/300",
+        "location": {
+            "city": "Bandung",
+            "address": "Jl. Gatot Subroto No. 5",
+            "postalCode": "40262"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "2 Days",
+            "staffCount": 3
+        },
+        "reviews": {
+            "count": 35,
+            "lastReview": "Good as new.",
+            "averageStars": 4.4
+        }
+    },
+    {
+        "id": 15,
+        "name": "House Painting",
+        "category": "Home Service",
+        "price": 300000,
+        "rating": 4.7,
+        "image": "https://picsum.photos/seed/painting/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Tebet No. 10",
+            "postalCode": "12810"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "1 Week",
+            "staffCount": 6
+        },
+        "reviews": {
+            "count": 80,
+            "lastReview": "Great job.",
+            "averageStars": 4.7
+        }
+    },
+    {
+        "id": 16,
+        "name": "Car Service",
+        "category": "Automotive",
+        "price": 250000,
+        "rating": 4.6,
+        "image": "https://picsum.photos/seed/carservice/400/300",
+        "location": {
+            "city": "Surabaya",
+            "address": "Jl. HR Muhammad No. 1",
+            "postalCode": "60226"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "5 Hours",
+            "staffCount": 8
+        },
+        "reviews": {
+            "count": 100,
+            "lastReview": "Reliable.",
+            "averageStars": 4.6
+        }
+    },
+    {
+        "id": 17,
+        "name": "Haircut",
+        "category": "Beauty",
+        "price": 50000,
+        "rating": 4.5,
+        "image": "https://picsum.photos/seed/haircut/400/300",
+        "location": {
+            "city": "Bandung",
+            "address": "Jl. Cihampelas No. 100",
+            "postalCode": "40131"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "45 Mins",
+            "staffCount": 4
+        },
+        "reviews": {
+            "count": 180,
+            "lastReview": "Stylish.",
+            "averageStars": 4.5
+        }
+    },
+    {
+        "id": 18,
+        "name": "Physiotherapy",
+        "category": "Health",
+        "price": 180000,
+        "rating": 4.8,
+        "image": "https://picsum.photos/seed/physio/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Pondok Indah No. 5",
+            "postalCode": "12310"
+        },
+        "details": {
+            "availability": "Busy",
+            "duration": "1 Hour",
+            "staffCount": 3
+        },
+        "reviews": {
+            "count": 65,
+            "lastReview": "Recovery going well.",
+            "averageStars": 4.8
+        }
+    },
+    {
+        "id": 19,
+        "name": "CCTV Installation",
+        "category": "Repair",
+        "price": 350000,
+        "rating": 4.9,
+        "image": "https://picsum.photos/seed/cctv/400/300",
+        "location": {
+            "city": "Surabaya",
+            "address": "Jl. Basuki Rahmat No. 10",
+            "postalCode": "60271"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "6 Hours",
+            "staffCount": 4
+        },
+        "reviews": {
+            "count": 45,
+            "lastReview": "Clear footage.",
+            "averageStars": 4.9
+        }
+    },
+    {
+        "id": 20,
+        "name": "Window Cleaning",
+        "category": "Home Service",
+        "price": 55000,
+        "rating": 4.4,
+        "image": "https://picsum.photos/seed/window/400/300",
+        "location": {
+            "city": "Jakarta",
+            "address": "Jl. Menteng No. 1",
+            "postalCode": "10310"
+        },
+        "details": {
+            "availability": "Available",
+            "duration": "2 Hours",
+            "staffCount": 2
+        },
+        "reviews": {
+            "count": 55,
+            "lastReview": "Very clear.",
+            "averageStars": 4.4
+        }
+    }
+]
