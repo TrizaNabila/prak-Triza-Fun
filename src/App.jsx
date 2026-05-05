@@ -1,90 +1,57 @@
-// Load data
-const loadServices = () => {
-  if (!window.servicesData) {
-    fetch('src/data/services.json')
-      .then(res => res.json())
-      .then(data => {
-        window.servicesData = data;
-        window.dispatchEvent(new Event('servicesLoaded'));
-      });
-  }
-};
+import React, { Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import Loading from "./components/Loading";
 
-// Initial render loading state
-function AppContent() {
-  const [view, setView] = React.useState('guest');
-  const [search, setSearch] = React.useState("");
-  const [category, setCategory] = React.useState("");
-  const [city, setCity] = React.useState("");
-  const [services, setServices] = React.useState(window.servicesData || []);
+// ✅ React Lazy - semua halaman di-lazy load
+const Dashboard   = React.lazy(() => import("./pages/Dashboard"));
+const Orders      = React.lazy(() => import("./pages/Orders"));
+const Customers   = React.lazy(() => import("./pages/Customers"));
+const NotFound    = React.lazy(() => import("./pages/NotFound"));
+const MainLayout  = React.lazy(() => import("./layouts/MainLayout"));
+const AuthLayout  = React.lazy(() => import("./layouts/AuthLayout"));
+const Login       = React.lazy(() => import("./pages/auth/Login"));
+const Register    = React.lazy(() => import("./pages/auth/Register"));
+const Forgot      = React.lazy(() => import("./pages/auth/Forgot"));
 
-  React.useEffect(() => {
-    if (window.servicesData) {
-      setServices(window.servicesData);
-    } else {
-      const handler = () => setServices(window.servicesData);
-      window.addEventListener('servicesLoaded', handler);
-      loadServices();
-      return () => window.removeEventListener('servicesLoaded', handler);
-    }
-  }, []);
-
-  const categories = services.length ? [...new Set(services.map(i => i.category))] : [];
-  const cities = services.length ? [...new Set(services.map(i => i.location.city))] : [];
-
-  if (!services.length) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="mc-panel p-8 text-center">
-          <p className="text-black">⛏️ Loading ServisCraft data...</p>
-        </div>
-      </div>
-    );
-  }
+function App() {
+  const errorImg = "/img/error.png";
 
   return (
-    <div className="min-h-screen py-4 px-3">
-      <div className="max-w-7xl mx-auto">
-        <header className="flex flex-col items-center mb-8 gap-5 pt-6">
-          <h1 className="text-5xl md:text-6xl text-white tracking-widest" style={{ textShadow: '6px 6px 0px #2c2c2c' }}>
-            Servis<span className="text-[#6caf3c]">Craft</span>
-          </h1>
-          
-          <div className="flex gap-4 mc-panel p-2">
-            <button onClick={() => setView('guest')} className={`mc-button ${view === 'guest' ? 'mc-button-active' : ''}`}>
-              🧙 PLAYER VIEW
-            </button>
-            <button onClick={() => setView('admin')} className={`mc-button ${view === 'admin' ? 'admin-active' : ''}`}>
-              👑 OP PANEL
-            </button>
-          </div>
-        </header>
+    // ✅ Suspense membungkus semua Routes — fallback ditampilkan saat halaman belum siap
+    <Suspense fallback={<Loading />}>
+      <Routes>
 
-        <FilterBar 
-          search={search} setSearch={setSearch}
-          category={category} setCategory={setCategory}
-          city={city} setCity={setCity}
-          categories={categories} cities={cities}
-        />
+        {/* ===== Main Layout (halaman utama dengan Sidebar + Header) ===== */}
+        <Route element={<MainLayout />}>
+          <Route path="/"          element={<Dashboard />} />
+          <Route path="/orders"    element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
 
-        {view === 'guest' ? 
-          <GuestView search={search} filterCategory={category} filterCity={city} /> : 
-          <AdminView search={search} filterCategory={category} filterCity={city} />
-        }
-        
-        <footer className="mt-16 mc-panel p-3 text-center text-black text-[9px]">
-          <p>⛏️ ServisCraft © 2025 — All blocks preserved</p>
-        </footer>
-      </div>
-    </div>
+          {/* Error Pages */}
+          <Route path="/error-400" element={
+            <NotFound code="400" message="Bad Request: Permintaan tidak valid." image={errorImg} />
+          }/>
+          <Route path="/error-401" element={
+            <NotFound code="401" message="Unauthorized: Silakan login terlebih dahulu." image={errorImg} />
+          }/>
+          <Route path="/error-403" element={
+            <NotFound code="403" message="Forbidden: Anda tidak memiliki izin akses." image={errorImg} />
+          }/>
+          <Route path="*" element={
+            <NotFound code="404" message="Oops! Halaman yang Anda cari tidak ditemukan." image={errorImg} />
+          }/>
+        </Route>
+
+        {/* ===== Auth Layout (Login / Register / Forgot) ===== */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login"    element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot"   element={<Forgot />} />
+        </Route>
+
+      </Routes>
+    </Suspense>
   );
 }
 
-// Make components global for Babel
-window.GuestView = GuestView;
-window.AdminView = AdminView;
-window.FilterBar = FilterBar;
-
-// Render
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppContent />);
+export default App;

@@ -1,88 +1,46 @@
-/* Matikan penghalusan font agar pixel terlihat tajam */
-:root {
-  image-rendering: pixelated;
-  font-family: 'Press Start 2P', cursive;
+/* Sidebar Styling */
+aside {
+  width: 260px;
+  background: white;
+  height: 100vh;
+  position: fixed;
+  border-right: 1px solid #f1e4d3;
+  padding: 2rem;
 }
 
-body {
-  margin: 0;
-  background-color: #4e4e4e; /* Warna abu-abu dalam gua */
-  color: #ffffff;
+/* Main Content Area */
+main, .content-area {
+  margin-left: 260px; /* Memberi ruang agar tidak tertutup sidebar */
+  padding: 2rem;
+  width: calc(100% - 260px);
 }
 
-/* Container Utama */
-.mc-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-/* Header Logo */
-.mc-logo {
-  font-size: 32px;
-  text-align: center;
-  margin-bottom: 40px;
-  text-shadow: 4px 4px 0px #000000;
-  color: #5da143; /* Warna Hijau Grass */
-}
-
-/* Panel GUI Abu-abu */
-.mc-gui-card {
-  background-color: #c6c6c6;
-  border: 4px solid;
-  border-color: #ffffff #373737 #373737 #ffffff;
-  padding: 16px;
-  color: #373737;
-}
-
-/* Input & Select Minecraft */
-.mc-input {
-  background-color: #000000;
-  color: #ffffff;
-  border: 4px solid #555555;
-  padding: 12px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 10px;
-  width: 100%;
-  outline: none;
-}
-
-/* Tombol Minecraft */
-.mc-button {
-  background-color: #8c8c8c;
-  border: 4px solid;
-  border-color: #ffffff #373737 #373737 #ffffff;
-  color: #ffffff;
-  padding: 10px 20px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 10px;
-  cursor: pointer;
-  text-shadow: 2px 2px 0px #373737;
-}
-
-.mc-button:active {
-  border-color: #373737 #ffffff #ffffff #373737;
-}
-
-/* Grid Layout */
-.mc-grid {
+/* Statistik Grid (4 kotak di atas) */
+/* Ini akan memaksa kotak-kotak kamu berjejer ke samping */
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-/* Label Kecil */
-.mc-label {
-  font-size: 8px;
-  background-color: #555555;
-  color: #ffffff;
-  padding: 4px;
-  display: inline-block;
-  margin-bottom: 8px;
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #f1e4d3;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-/* Harga & Rating */
-.mc-price {
-  color: #00aa00; /* Hijau Emerald */
-  font-size: 12px;
+.stat-card h3 {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+
+.stat-card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #2c3e50;
 }
