@@ -1,151 +1,114 @@
 import {
-  FaChair,
-  FaShoppingCart,
-  FaTruck,
-  FaUtensils,
-  FaUsers,
+  FaChair, FaShoppingCart, FaUsers, FaEllipsisV, FaPlus
 } from "react-icons/fa";
-import { MdTrendingUp } from "react-icons/md";
-import PagesHeader from "../components/PagesHeader";
+import { MdUpdate, MdAccessTime } from "react-icons/md";
+import PageHeader from "../components/PagesHeader";
 
 const statCards = [
-  {
-    icon: FaShoppingCart,
-    iconBg: "bg-pink-500",
-    label: "Total Pesanan",
-    value: "75",
-    growth: "+12%",
-    growthColor: "text-pink-600 bg-pink-100",
-    bar: "bg-pink-400",
-    barWidth: "w-1/3",
-  },
-  {
-    icon: FaTruck,
-    iconBg: "bg-blue-500",
-    label: "Total Terkirim",
-    value: "175",
-    growth: "+23%",
-    growthColor: "text-pink-600 bg-pink-100",
-    bar: "bg-blue-400",
-    barWidth: "w-2/3",
-  },
-  {
-    icon: FaChair,
-    iconBg: "bg-orange-400",
-    label: "Paket Furniture",
-    value: "24",
-    growth: "+8%",
-    growthColor: "text-pink-600 bg-pink-100",
-    bar: "bg-orange-300",
-    barWidth: "w-1/4",
-  },
-  {
-    icon: FaUsers,
-    iconBg: "bg-purple-500",
-    label: "Total Pelanggan",
-    value: "320",
-    growth: "+18%",
-    growthColor: "text-pink-600 bg-pink-100",
-    bar: "bg-purple-400",
-    barWidth: "w-1/2",
-  },
+  /* WARNA ICON DISAMAKAN DENGAN SIDEBAR (#343a40) */
+  { icon: FaShoppingCart, iconBg: "bg-[#343a40]", label: "Total Orders", value: "182", growth: "+12%", desc: "than yesterday" },
+  { icon: FaUsers, iconBg: "bg-[#e91e63]", label: "Today's Users", value: "2,300", growth: "+3%", desc: "than last month" },
+  { icon: FaChair, iconBg: "bg-green-500", label: "Stock Items", value: "452", growth: "+5%", desc: "just updated" },
+  { icon: FaPlus, iconBg: "bg-blue-500", label: "New Leads", value: "95", growth: "+15%", desc: "in last 24h" },
+];
+
+const furnitureGallery = [
+  { name: "Scandinavian Chair", type: "Living Room", price: "Rp 1.2M", img: "https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=500" },
+  { name: "Modern Sofa Pink", type: "Bedroom", price: "Rp 4.5M", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=500" },
+  { name: "Wooden Dining Table", type: "Kitchen", price: "Rp 3.8M", img: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?q=80&w=500" },
 ];
 
 const recentOrders = [
-  { id: "#ORD-5001", customer: "Alya Maharani", menu: "Set Ruang Tamu Modern", status: "Completed", total: "Rp 450.000" },
-  { id: "#ORD-5002", customer: "Bayu Prasetyo", menu: "Kursi Kantor Ergonomis", status: "Pending", total: "Rp 1.542.000" },
-  { id: "#ORD-5003", customer: "Citra Dewi", menu: "Lemari Pakaian Minimalis", status: "Completed", total: "Rp 1.206.000" },
-  { id: "#ORD-5004", customer: "Dani Kurniawan", menu: "Sofa 3-Seater Pink", status: "Cancelled", total: "Rp 611.000" },
-  { id: "#ORD-5005", customer: "Elisa Putri", menu: "Buffet TV Cabinet", status: "Pending", total: "Rp 1.200.000" },
+  { id: "#ORD-5001", customer: "Alya Maharani", product: "Minimalist Sofa", status: "Completed", total: "Rp 4.500.000" },
+  { id: "#ORD-5002", customer: "Bayu Prasetyo", product: "Office Chair", status: "Pending", total: "Rp 1.542.000" },
 ];
 
 export default function Dashboard() {
   return (
-    <div>
-      <PagesHeader title="Dashboard" />
+    <div className="space-y-10 pb-10">
+      <PageHeader title="Dashboard" />
 
-      {/* Greeting */}
-      <div className="mt-4 mb-6 bg-gradient-to-r from-pink-500 to-pink-600 rounded-2xl p-6 text-white shadow-lg">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Selamat Datang, Triza-Fun 🪑</h1>
-            <p className="text-pink-100 mt-1">
-              Kelola pesanan furniture Anda hari ini
-            </p>
-          </div>
-          <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-xl">
-            <MdTrendingUp className="text-white text-xl" />
-            <span className="text-sm font-semibold">Performa Baik!</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Stat Cards */}
-      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+      {/* 1. STATS CARDS */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 mt-6">
         {statCards.map((card, i) => {
           const Icon = card.icon;
           return (
-            <div key={i} className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
-              <div className="flex justify-between items-start mb-4">
-                <div className={`${card.iconBg} p-3 rounded-xl`}>
-                  <Icon className="text-white text-lg" />
-                </div>
-                <span className={`text-xs font-bold px-2 py-1 rounded-full ${card.growthColor}`}>
-                  {card.growth}
-                </span>
+            <div key={i} className="relative bg-white rounded-2xl shadow-sm p-4 border border-gray-100 transition-all hover:-translate-y-1">
+              <div className={`absolute -top-6 left-4 w-16 h-16 ${card.iconBg} rounded-xl shadow-lg flex items-center justify-center text-white text-2xl`}>
+                <Icon />
               </div>
-              <p className="text-gray-500 text-sm">{card.label}</p>
-              <p className="text-3xl font-bold text-gray-800 mt-1">{card.value}</p>
-              <div className="mt-3 h-1.5 bg-gray-100 rounded-full">
-                <div className={`h-1.5 rounded-full ${card.bar} ${card.barWidth}`} />
+              <div className="text-right pt-2">
+                <p className="text-sm font-light text-gray-500">{card.label}</p>
+                <h4 className="text-2xl font-bold text-slate-700">{card.value}</h4>
+              </div>
+              <div className="border-t border-gray-100 mt-4 pt-4 flex items-center gap-1 text-xs">
+                <span className="text-green-500 font-bold">{card.growth}</span>
+                <span className="text-gray-400 italic">{card.desc}</span>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Recent Orders Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100">
-        <div className="p-5 border-b border-gray-100">
-          <h2 className="font-bold text-gray-800">Pesanan Terbaru</h2>
-          <p className="text-sm text-gray-400 mt-0.5">5 pesanan terakhir masuk</p>
+      {/* 2. FURNITURE VISUAL GALLERY */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {furnitureGallery.map((item, i) => (
+          <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+            <div className="relative -mt-10 mb-4 h-48 bg-gray-200 rounded-xl overflow-hidden shadow-lg border border-white/10">
+              <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+              <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-xs font-bold">
+                {item.price}
+              </div>
+            </div>
+            <h6 className="font-bold text-slate-800 text-lg">{item.name}</h6>
+            <p className="text-sm text-gray-500 mb-4">{item.type}</p>
+            <div className="border-t border-gray-100 pt-4 flex items-center justify-between text-xs text-gray-400">
+              <span className="flex items-center gap-1"><MdAccessTime /> Campaign sent 2 days ago</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 3. RECENT ORDERS TABLE - WARNA HEADER DISAMAKAN DENGAN SIDEBAR */}
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 mt-10 overflow-hidden">
+        {/* HEADER: Ganti gradasi dari slate ke bg-[#343a40] */}
+        <div className="relative mx-4 -mt-6 p-6 bg-[#343a40] rounded-xl shadow-xl flex justify-between items-center text-white">
+          <div>
+            <h2 className="font-bold text-lg tracking-wide uppercase text-sm">Recent Orders</h2>
+            <p className="text-[11px] text-white/50 flex items-center gap-1 mt-1 font-light">
+              <MdUpdate className="text-pink-500" /> 30 projects done this month
+            </p>
+          </div>
+          <FaEllipsisV className="cursor-pointer opacity-50 hover:opacity-100 transition-opacity" />
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
+        
+        <div className="p-6 overflow-x-auto">
+          <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50 text-xs text-gray-500 uppercase">
-                <th className="p-4">ID Pesanan</th>
-                <th className="p-4">Pelanggan</th>
-                <th className="p-4">Produk</th>
-                <th className="p-4">Status</th>
-                <th className="p-4">Total</th>
+              <tr className="text-[11px] text-gray-400 uppercase tracking-[0.2em] border-b border-gray-50">
+                <th className="pb-4 font-bold">ID</th>
+                <th className="pb-4 font-bold">Customer</th>
+                <th className="pb-4 font-bold">Product</th>
+                <th className="pb-4 font-bold text-center">Status</th>
+                <th className="pb-4 font-bold text-right">Value</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-gray-50">
               {recentOrders.map((order) => (
-                <tr
-                  key={order.id}
-                  className="border-t border-gray-50 hover:bg-gray-50/50 transition-colors"
-                >
-                  <td className="p-4 text-sm font-bold text-hijau">{order.id}</td>
-                  <td className="p-4 text-sm text-gray-700">{order.customer}</td>
-                  <td className="p-4 text-sm text-gray-500">{order.menu}</td>
-                  <td className="p-4 text-sm">
-                    <span
-                      className={`px-3 py-1 rounded-lg text-xs font-bold ${
-                        order.status === "Completed"
-                          ? "bg-pink-100 text-pink-600"
-                          : order.status === "Pending"
-                          ? "bg-blue-100 text-blue-600"
-                          : "bg-red-100 text-red-600"
-                      }`}
-                    >
+                <tr key={order.id} className="hover:bg-gray-50/50 transition-colors group">
+                  <td className="py-4 text-sm font-bold text-slate-700">{order.id}</td>
+                  <td className="py-4 text-sm text-gray-600 font-medium">{order.customer}</td>
+                  <td className="py-4 text-sm text-gray-400 font-light">{order.product}</td>
+                  <td className="py-4 text-sm text-center">
+                    <span className={`inline-block px-3 py-1 rounded-lg text-[10px] font-bold uppercase shadow-none ${
+                        order.status === "Completed" 
+                        ? "bg-green-100 text-green-600" 
+                        : "bg-blue-100 text-blue-600"
+                      }`}>
                       {order.status}
                     </span>
                   </td>
-                  <td className="p-4 text-sm font-semibold text-gray-700">
-                    {order.total}
-                  </td>
+                  <td className="py-4 text-sm font-bold text-slate-700 text-right">{order.total}</td>
                 </tr>
               ))}
             </tbody>

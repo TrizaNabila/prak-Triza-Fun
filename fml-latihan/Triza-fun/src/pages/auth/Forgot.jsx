@@ -16,7 +16,7 @@ export default function Forgot() {
         Lupa Password? 🔑
       </h2>
       <p className="text-center text-sm text-gray-400 mb-6">
-        Masukkan email Anda untuk reset password
+        Masukkan email Anda untuk reset passwordd
       </p>
 
       {sent ? (

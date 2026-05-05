@@ -1,43 +1,31 @@
-import { MdRefresh } from "react-icons/md";
+import { MdHome, MdSettings, MdNotifications } from "react-icons/md";
 
-export default function PageHeader({ title, breadcrumb, children }) {
+export default function PageHeader({ title }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+    <div className="flex items-center justify-between mb-8 px-2">
+      {/* Breadcrumbs */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-800 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-          {title}
-        </h1>
-        <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
-          <span className="hover:text-hijau cursor-pointer transition-colors">Dashboard</span>
-          {/* Logika Breadcrumb: Bisa string atau array */}
-          {Array.isArray(breadcrumb) ? (
-            breadcrumb.map((item, index) => (
-              <span key={index} className="flex gap-2">
-                <span>/</span>
-                <span className={index === breadcrumb.length - 1 ? "text-gray-600 font-medium" : ""}>
-                  {item}
-                </span>
-              </span>
-            ))
-          ) : (
-            <>
-              <span>/</span>
-              <span className="text-gray-600 font-medium">{breadcrumb}</span>
-            </>
-          )}
-        </div>
+        <nav className="flex text-sm text-gray-500 mb-1">
+          <span className="flex items-center gap-1 opacity-60">
+            <MdHome className="text-base" /> /
+          </span>
+          <span className="ml-1 opacity-60">Pages /</span>
+          <span className="ml-1 text-slate-700 font-medium capitalize">{title}</span>
+        </nav>
+        <h1 className="text-xl font-bold text-slate-800 tracking-tight">{title}</h1>
       </div>
-      
-      <div className="flex gap-3">
-        <button 
-          onClick={() => window.location.reload()}
-          className="px-5 py-2.5 border border-gray-200 rounded-xl text-gray-500 hover:bg-gray-50 hover:border-hijau hover:text-hijau transition-all duration-300 flex items-center gap-2"
-        >
-          <MdRefresh className="text-lg" />
-          Refresh
-        </button>
-        {/* Children digunakan untuk tombol custom seperti 'Add New' dsb */}
-        {children}
+
+      {/* Quick Action Icons */}
+      <div className="flex items-center gap-4 text-gray-500">
+        <div className="relative group cursor-pointer">
+          <input 
+            type="text" 
+            placeholder="Search here..." 
+            className="border-b border-gray-300 bg-transparent text-sm py-1 focus:border-pink-500 outline-none transition-all w-40"
+          />
+        </div>
+        <MdSettings className="text-xl cursor-pointer hover:text-pink-500" />
+        <MdNotifications className="text-xl cursor-pointer hover:text-pink-500" />
       </div>
     </div>
   );
