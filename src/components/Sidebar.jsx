@@ -1,4 +1,4 @@
-import { MdDashboard, MdWeekend, MdLogout, MdPerson, MdReceiptLong, MdSettings } from "react-icons/md";
+import { MdDashboard, MdChair, MdLogout, MdPerson, MdReceiptLong, MdSettings } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
@@ -8,15 +8,15 @@ export default function Sidebar() {
     { id: "1", name: "Dashboard", icon: <MdDashboard />, path: "/", category: "MAIN" },
     { id: "2", name: "Orders", icon: <MdReceiptLong />, path: "/orders", category: "PAGES" },
     { id: "3", name: "Customers", icon: <MdPerson />, path: "/customers", category: "PAGES" },
-    { id: "4", name: "Furniture", icon: <MdWeekend />, path: "/products", category: "PAGES" },
+    /* PATH harus /products agar sesuai dengan App.jsx dan tidak Error 404 */
+    { id: "4", name: "Products", icon: <MdChair />, path: "/products", category: "PAGES" }, 
     { id: "5", name: "Settings", icon: <MdSettings />, path: "/settings", category: "ACCOUNT" },
   ];
 
   return (
-    /* GANTI BACKGROUND KE #343a40 (Abu-abu Gelap / Charcoal) */
     <aside className="fixed left-4 top-4 bottom-4 w-64 bg-[#343a40] rounded-2xl z-50 flex flex-col font-['Roboto'] shadow-none border-0">
       
-      {/* PROFILE SECTION: Foto di Kiri, Nama di Kanan */}
+      {/* PROFILE SECTION */}
       <div className="p-5 border-b border-white/5 mx-2 mt-2">
         <div className="flex items-center gap-4 px-1">
           <img 
@@ -50,6 +50,7 @@ export default function Sidebar() {
                 )}
                 <NavLink
                   to={menu.path}
+                  // Logika Active agar tombol menyala pink saat diklik
                   className={({ isActive }) =>
                     `flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-300 text-sm
                     ${isActive 
@@ -66,7 +67,7 @@ export default function Sidebar() {
         </ul>
       </nav>
 
-      {/* LOGOUT */}
+      {/* LOGOUT SECTION */}
       <div className="p-4 border-t border-white/5 mx-2 mb-2">
         <button 
           onClick={() => navigate('/login')}
