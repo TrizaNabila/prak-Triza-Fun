@@ -1,4 +1,4 @@
-import { MdDashboard, MdChair, MdLogout, MdPerson, MdReceiptLong, MdSettings } from "react-icons/md";
+import { MdDashboard, MdChair, MdLogout, MdPerson, MdReceiptLong, MdSettings, MdDashboardCustomize } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
@@ -8,9 +8,9 @@ export default function Sidebar() {
     { id: "1", name: "Dashboard", icon: <MdDashboard />, path: "/", category: "MAIN" },
     { id: "2", name: "Orders", icon: <MdReceiptLong />, path: "/orders", category: "PAGES" },
     { id: "3", name: "Customers", icon: <MdPerson />, path: "/customers", category: "PAGES" },
-    /* PATH harus /products agar sesuai dengan App.jsx dan tidak Error 404 */
     { id: "4", name: "Products", icon: <MdChair />, path: "/products", category: "PAGES" }, 
-    { id: "5", name: "Settings", icon: <MdSettings />, path: "/settings", category: "ACCOUNT" },
+    { id: "5", name: "Components", icon: <MdDashboardCustomize />, path: "/components", category: "PAGES" },
+    { id: "6", name: "Settings", icon: <MdSettings />, path: "/settings", category: "ACCOUNT" },
   ];
 
   return (
@@ -50,7 +50,7 @@ export default function Sidebar() {
                 )}
                 <NavLink
                   to={menu.path}
-                  // Logika Active agar tombol menyala pink saat diklik
+                  end={menu.path === "/"}
                   className={({ isActive }) =>
                     `flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-300 text-sm
                     ${isActive 
