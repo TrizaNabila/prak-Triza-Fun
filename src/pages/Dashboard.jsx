@@ -11,6 +11,7 @@ import AddCustomerModal from "../components/feedback/AddCustomerModal";
 import SuccessToast from "../components/feedback/SuccessToast";
 import KpiSummarySection from "../components/section/KpiSummarySection";
 import LeadManagementSection from "../components/section/LeadManagementSection";
+import FurnitureAnalyticsSection from "../components/section/FurnitureAnalyticsSection";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +55,9 @@ export default function Dashboard() {
 
       {/* 1. SECTION COMPONENT: Stats Grid */}
       <KpiSummarySection />
+
+      {/* 1.5. ANALYTICS SECTION: Sales Chart & Order Status */}
+      <FurnitureAnalyticsSection />
 
       {/* 2. FURNITURE VISUAL GALLERY */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-6">

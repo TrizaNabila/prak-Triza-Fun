@@ -14,10 +14,10 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="fixed left-4 top-4 bottom-4 w-64 bg-[#343a40] rounded-2xl z-50 flex flex-col font-['Roboto'] shadow-none border-0">
+    <aside className="fixed left-4 top-4 bottom-4 w-64 bg-[#040814] rounded-3xl z-50 flex flex-col font-['Roboto'] shadow-[0_30px_90px_rgba(0,0,0,0.35)] border border-slate-800">
       
       {/* PROFILE SECTION */}
-      <div className="p-5 border-b border-white/5 mx-2 mt-2">
+      <div className="p-5 border-b border-slate-800 mx-2 mt-2">
         <div className="flex items-center gap-4 px-1">
           <img 
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=facearea" 
@@ -44,7 +44,7 @@ export default function Sidebar() {
             return (
               <li key={menu.id}>
                 {showCategory && (
-                  <p className="text-[10px] font-bold text-white/30 px-4 mt-6 mb-2 uppercase tracking-[0.25em]">
+                  <p className="text-[10px] font-bold text-slate-500 px-4 mt-6 mb-2 uppercase tracking-[0.25em]">
                     {menu.category}
                   </p>
                 )}
@@ -68,10 +68,10 @@ export default function Sidebar() {
       </nav>
 
       {/* LOGOUT SECTION */}
-      <div className="p-4 border-t border-white/5 mx-2 mb-2">
+      <div className="p-4 border-t border-slate-800 mx-2 mb-2">
         <button 
           onClick={() => navigate('/login')}
-          className="w-full flex items-center gap-4 px-4 py-3 text-white/40 hover:text-white transition-all text-[11px] uppercase font-bold tracking-[0.2em]"
+          className="w-full flex items-center gap-4 px-4 py-3 text-slate-300 hover:text-white transition-all text-[11px] uppercase font-bold tracking-[0.2em]"
         >
           <MdLogout className="text-lg text-pink-500" />
           <span>Logout</span>

@@ -46,41 +46,41 @@ const customersData = Array.from({ length: 30 }, (_, i) => ({
 
 export default function Customers() {
   return (
-    <div id="dashboard-container">
-      <PageHeader title="Customers" breadcrumb="Management" />
+    <div className="space-y-10 pb-10 px-2 text-slate-200">
+      <PageHeader title="Customers" />
 
-      <div className="mt-6 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="mt-6 bg-slate-950/90 rounded-3xl shadow-xl border border-slate-800 overflow-hidden">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-gray-50/50 border-b border-gray-100">
-              <th className="p-4 font-semibold text-gray-600">Customer ID</th>
-              <th className="p-4 font-semibold text-gray-600">Name</th>
-              <th className="p-4 font-semibold text-gray-600">Contact Info</th>
-              <th className="p-4 font-semibold text-gray-600">Total Order</th>
-              <th className="p-4 font-semibold text-gray-600">Loyalty</th>
+            <tr className="bg-slate-900/90 border-b border-slate-800">
+              <th className="p-4 font-semibold text-slate-300">Customer ID</th>
+              <th className="p-4 font-semibold text-slate-300">Name</th>
+              <th className="p-4 font-semibold text-slate-300">Contact Info</th>
+              <th className="p-4 font-semibold text-slate-300">Total Order</th>
+              <th className="p-4 font-semibold text-slate-300">Loyalty</th>
             </tr>
           </thead>
           <tbody>
             {customersData.map((cus) => (
               <tr
                 key={cus.id}
-                className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors"
+                className="border-b border-slate-800 hover:bg-slate-800/60 transition-colors"
               >
-                <td className="p-4 text-sm font-medium text-hijau">{cus.id}</td>
-                <td className="p-4 text-sm font-bold text-gray-800">{cus.name}</td>
-                <td className="p-4 text-sm text-gray-500">
+                <td className="p-4 text-sm font-medium text-pink-300">{cus.id}</td>
+                <td className="p-4 text-sm font-bold text-white">{cus.name}</td>
+                <td className="p-4 text-sm text-slate-400">
                   <div>{cus.email}</div>
-                  <div className="text-xs text-gray-400">{cus.phone}</div>
+                  <div className="text-xs text-slate-500">{cus.phone}</div>
                 </td>
-                <td className="p-4 text-sm text-gray-600 font-medium">{cus.orders}x</td>
+                <td className="p-4 text-sm text-slate-300 font-medium">{cus.orders}x</td>
                 <td className="p-4 text-sm">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-bold ${
                       cus.loyalty === "Gold"
-                        ? "bg-amber-100 text-amber-600"
+                        ? "bg-amber-100/15 text-amber-300"
                         : cus.loyalty === "Silver"
-                        ? "bg-slate-100 text-slate-600"
-                        : "bg-orange-100 text-orange-600"
+                        ? "bg-slate-700/70 text-slate-200"
+                        : "bg-orange-100/15 text-orange-300"
                     }`}
                   >
                     {cus.loyalty}

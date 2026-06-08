@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 
 export default function MainLayout() {
   return (
-    <div className="min-h-screen bg-[#f0f2f5]">
+    <div className="min-h-screen bg-[#040814] text-slate-100">
       <Sidebar />
 
       {/* Konten utama bergeser ke kanan sebesar lebar sidebar + margin */}
