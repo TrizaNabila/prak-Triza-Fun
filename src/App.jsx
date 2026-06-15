@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Loading from "./components/Loading";
+import { ThemeProvider } from "./context/ThemeContext";
 
 // ==========================================
 // 🚀 DEKLARASI REACT LAZY LOADING HALAMAN
@@ -9,6 +10,7 @@ const Dashboard      = React.lazy(() => import("./pages/Dashboard"));
 const Orders         = React.lazy(() => import("./pages/Orders"));
 const Customers      = React.lazy(() => import("./pages/Customers"));
 const Products       = React.lazy(() => import("./pages/Products"));
+const Settings       = React.lazy(() => import("./pages/Settings"));
 
 // ➕ Halaman Koleksi Komponen Tugas Pertemuan 10 Anda
 const ComponentsPage = React.lazy(() => import("./pages/ComponentsPage"));
@@ -24,8 +26,9 @@ function App() {
   const errorImg = "/img/error.png";
 
   return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
+    <ThemeProvider>
+      <Suspense fallback={<Loading />}>
+        <Routes>
 
         {/* ==========================================
             💎 MAIN LAYOUT (Halaman Ber-Sidebar + Header Toko Anda)
@@ -37,6 +40,7 @@ function App() {
           <Route path="/customers"    element={<Customers />} />
           <Route path="/products"     element={<Products />} />
           <Route path="/products/:id" element={<Products />} />
+          <Route path="/settings"     element={<Settings />} />
 
           {/* 🎯 DI SINI: Kita taruh /components di dalam MainLayout agar menyatu dengan Sidebar */}
           <Route path="/components"   element={<ComponentsPage />} />
@@ -70,7 +74,8 @@ function App() {
         }/>
 
       </Routes>
-    </Suspense>
+      </Suspense>
+    </ThemeProvider>
   );
 }
 

@@ -19,6 +19,19 @@ body {
   color: #e2e8f0;
 }
 
+html.light body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+html.light #root {
+  background: #f8fafc;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+}
+
 /* Scrollbar halus untuk Sidebar */
 ::-webkit-scrollbar {
   width: 4px;

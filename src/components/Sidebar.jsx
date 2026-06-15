@@ -1,8 +1,10 @@
 import { MdDashboard, MdChair, MdLogout, MdPerson, MdReceiptLong, MdSettings, MdDashboardCustomize } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const menus = [
     { id: "1", name: "Dashboard", icon: <MdDashboard />, path: "/", category: "MAIN" },
@@ -14,10 +16,10 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="fixed left-4 top-4 bottom-4 w-64 bg-[#040814] rounded-3xl z-50 flex flex-col font-['Roboto'] shadow-[0_30px_90px_rgba(0,0,0,0.35)] border border-slate-800">
+    <aside className={`fixed left-4 top-4 bottom-4 w-64 rounded-3xl z-50 flex flex-col font-['Roboto'] ${theme === "dark" ? "bg-[#040814] border-slate-800 shadow-[0_30px_90px_rgba(0,0,0,0.35)]" : "bg-white/90 border-slate-200 shadow-[0_30px_90px_rgba(15,23,42,0.08)]"}`}>
       
       {/* PROFILE SECTION */}
-      <div className="p-5 border-b border-slate-800 mx-2 mt-2">
+      <div className={`p-5 border-b mx-2 mt-2 ${theme === "dark" ? "border-slate-800" : "border-slate-200"}`}>
         <div className="flex items-center gap-4 px-1">
           <img 
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=facearea" 
@@ -25,10 +27,10 @@ export default function Sidebar() {
             alt="Profile"
           />
           <div className="flex flex-col">
-            <span className="text-white font-bold text-[13px] tracking-tight leading-tight">
+            <span className={`${theme === "dark" ? "text-white" : "text-slate-900"} font-bold text-[13px] tracking-tight leading-tight`}>
               Triza Nabila Ariely
             </span>
-            <span className="text-white/40 text-[10px] font-light uppercase tracking-widest mt-1">
+            <span className={`${theme === "dark" ? "text-white/40" : "text-slate-500"} text-[10px] font-light uppercase tracking-widest mt-1`}>
               Admin
             </span>
           </div>
@@ -44,7 +46,7 @@ export default function Sidebar() {
             return (
               <li key={menu.id}>
                 {showCategory && (
-                  <p className="text-[10px] font-bold text-slate-500 px-4 mt-6 mb-2 uppercase tracking-[0.25em]">
+                  <p className={`text-[10px] font-bold px-4 mt-6 mb-2 uppercase tracking-[0.25em] ${theme === "dark" ? "text-slate-500" : "text-slate-500"}`}>
                     {menu.category}
                   </p>
                 )}
@@ -53,9 +55,9 @@ export default function Sidebar() {
                   end={menu.path === "/"}
                   className={({ isActive }) =>
                     `flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-300 text-sm
-                    ${isActive 
-                      ? "bg-gradient-to-tr from-[#ec407a] to-[#d81b60] text-white shadow-lg shadow-pink-500/40 font-normal" 
-                      : "text-white/70 hover:bg-white/10 hover:text-white font-light"}`
+                    ${isActive
+                      ? `${theme === "dark" ? "bg-gradient-to-tr from-[#ec407a] to-[#d81b60] text-white shadow-lg shadow-pink-500/40 font-normal" : "bg-slate-200 text-slate-900 font-normal"}`
+                      : `${theme === "dark" ? "text-white/70 hover:bg-white/10 hover:text-white font-light" : "text-slate-700 hover:bg-slate-200 hover:text-slate-900 font-light"}`}`
                   }
                 >
                   <div className="text-xl opacity-90">{menu.icon}</div>
@@ -68,10 +70,10 @@ export default function Sidebar() {
       </nav>
 
       {/* LOGOUT SECTION */}
-      <div className="p-4 border-t border-slate-800 mx-2 mb-2">
+      <div className={`p-4 mx-2 mb-2 border-t ${theme === "dark" ? "border-slate-800" : "border-slate-200"}`}>
         <button 
           onClick={() => navigate('/login')}
-          className="w-full flex items-center gap-4 px-4 py-3 text-slate-300 hover:text-white transition-all text-[11px] uppercase font-bold tracking-[0.2em]"
+          className={`w-full flex items-center gap-4 px-4 py-3 transition-all text-[11px] uppercase font-bold tracking-[0.2em] ${theme === "dark" ? "text-slate-300 hover:text-white" : "text-slate-700 hover:text-slate-900"}`}
         >
           <MdLogout className="text-lg text-pink-500" />
           <span>Logout</span>

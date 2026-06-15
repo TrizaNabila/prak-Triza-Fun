@@ -1,4 +1,5 @@
 import PageHeader from "../components/PagesHeader";
+import TableWrapperLayout from "../components/layout/TableWrapperLayout";
 
 const customerNames = [
   "Alya Maharani",
@@ -62,52 +63,56 @@ const ordersData = Array.from({ length: 30 }, (_, i) => ({
 
 export default function Orders() {
   return (
-    <div id="dashboard-container">
-      <PageHeader title="Orders" breadcrumb="Sales Report" />
+    <div id="dashboard-container" className="pb-10">
+      <PageHeader title="Orders" />
 
-      <div className="mt-6 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+      <TableWrapperLayout>
+        <div className="p-6 border-b border-slate-800">
+          <h2 className="text-lg font-bold text-slate-100">Daftar Pesanan</h2>
+          <p className="mt-2 text-sm text-slate-400">Semua pesanan terbaru ditampilkan dengan tampilan tema dashboard.</p>
+        </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
+          <table className="w-full text-left min-w-[760px]">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-100">
-                <th className="p-4 font-semibold text-gray-600">Order ID</th>
-                <th className="p-4 font-semibold text-gray-600">Customer</th>
-                <th className="p-4 font-semibold text-gray-600">Produk</th>
-                <th className="p-4 font-semibold text-gray-600">Status</th>
-                <th className="p-4 font-semibold text-gray-600">Total Price</th>
-                <th className="p-4 font-semibold text-gray-600">Date</th>
+              <tr className="bg-slate-900 border-b border-slate-800">
+                <th className="p-4 font-semibold text-slate-400">Order ID</th>
+                <th className="p-4 font-semibold text-slate-400">Customer</th>
+                <th className="p-4 font-semibold text-slate-400">Produk</th>
+                <th className="p-4 font-semibold text-slate-400">Status</th>
+                <th className="p-4 font-semibold text-slate-400">Total Price</th>
+                <th className="p-4 font-semibold text-slate-400">Date</th>
               </tr>
             </thead>
             <tbody>
               {ordersData.map((order) => (
                 <tr
                   key={order.id}
-                  className="border-b border-gray-50 hover:bg-gray-50/80 transition-colors"
+                  className="border-b border-slate-800 hover:bg-slate-900/80 transition-colors"
                 >
-                  <td className="p-4 text-sm font-bold text-gray-800">{order.id}</td>
-                  <td className="p-4 text-sm text-gray-600">{order.customer}</td>
-                  <td className="p-4 text-sm text-gray-500">{order.menu}</td>
+                  <td className="p-4 text-sm font-bold text-slate-100">{order.id}</td>
+                  <td className="p-4 text-sm text-slate-300">{order.customer}</td>
+                  <td className="p-4 text-sm text-slate-400">{order.menu}</td>
                   <td className="p-4 text-sm">
                     <span
-                      className={`px-3 py-1 rounded-lg text-xs font-bold ${
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         order.status === "Completed"
-                          ? "bg-pink-100 text-pink-600"
+                          ? "bg-pink-500/10 text-pink-300"
                           : order.status === "Pending"
-                          ? "bg-blue-100 text-blue-600"
-                          : "bg-red-100 text-red-600"
+                          ? "bg-blue-500/10 text-blue-300"
+                          : "bg-rose-500/10 text-rose-300"
                       }`}
                     >
                       {order.status}
                     </span>
                   </td>
-                  <td className="p-4 text-sm font-semibold text-gray-700">{order.total}</td>
-                  <td className="p-4 text-sm text-gray-400 font-medium">{order.date}</td>
+                  <td className="p-4 text-sm font-semibold text-slate-100">{order.total}</td>
+                  <td className="p-4 text-sm text-slate-400 font-medium">{order.date}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </div>
+      </TableWrapperLayout>
     </div>
   );
 }
