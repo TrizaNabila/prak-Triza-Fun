@@ -3,29 +3,51 @@ import { useState } from "react";
 import { ImSpinner2 } from "react-icons/im";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [dataForm, setDataForm] = useState({ email: "", password: "" });
+  const [dataForm, setDataForm] = useState({ username: "", password: "" });
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
     setDataForm({ ...dataForm, [name]: value });
   };
 
+  const { login } = useAuth();
+
+  const validateLocalUser = (username, password) => {
+    const storedUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    return storedUsers.find((user) => user.username === username && user.password === password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    axios.post("https://dummyjson.com/user/login", {
-      username: dataForm.email,
-      password: dataForm.password,
-    })
-    .then(() => navigate("/"))
-    .catch((err) => setError(err.response?.data.message || "Login Gagal"))
-    .finally(() => setLoading(false));
+
+    const localUser = validateLocalUser(dataForm.username, dataForm.password);
+    if (localUser) {
+      login();
+      navigate("/dashboard");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await axios.post("https://dummyjson.com/user/login", {
+        username: dataForm.username,
+        password: dataForm.password,
+      });
+      login();
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.response?.data?.message || "Login Gagal");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -68,10 +90,10 @@ export default function Login() {
 
             <div className="border-b border-gray-300 focus-within:border-[#e91e63] transition-all">
               <input 
-                name="email" 
+                name="username" 
                 type="text" 
                 onChange={handleChange} 
-                placeholder="Email" 
+                placeholder="Username" 
                 className="w-full py-2 outline-none text-sm bg-transparent text-gray-700 placeholder-gray-400" 
               />
             </div>

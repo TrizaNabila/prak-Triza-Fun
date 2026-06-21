@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const navigate = useNavigate();
-  const [dataForm, setDataForm] = useState({ name: "", email: "", password: "" });
+  const [dataForm, setDataForm] = useState({ name: "", username: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -12,6 +13,27 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+
+    if (!dataForm.name || !dataForm.username || !dataForm.password) {
+      setError("Semua field harus diisi.");
+      return;
+    }
+
+    const storedUsers = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    const usernameAlreadyUsed = storedUsers.some((user) => user.username === dataForm.username);
+
+    if (usernameAlreadyUsed) {
+      setError("Username ini sudah digunakan. Silakan login atau pilih username lain.");
+      return;
+    }
+
+    storedUsers.push({
+      name: dataForm.name,
+      username: dataForm.username,
+      password: dataForm.password,
+    });
+    localStorage.setItem("registeredUsers", JSON.stringify(storedUsers));
     navigate("/login");
   };
 
@@ -58,6 +80,11 @@ export default function Register() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-10 text-left">
+              {error && (
+                <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-700">
+                  {error}
+                </div>
+              )}
               
               {/* Field Nama */}
               <div className="group border-b border-gray-200 focus-within:border-[#e91e63] transition-colors duration-300">
@@ -70,13 +97,13 @@ export default function Register() {
                 />
               </div>
 
-              {/* Field Email */}
+              {/* Field Username */}
               <div className="group border-b border-gray-200 focus-within:border-[#e91e63] transition-colors duration-300">
                 <input
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="username"
                   onChange={handleChange}
-                  placeholder="Email Address"
+                  placeholder="Username"
                   className="w-full py-3 outline-none text-base bg-transparent text-gray-800 placeholder-gray-400"
                 />
               </div>

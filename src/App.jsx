@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 import Loading from "./components/Loading";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -11,6 +12,7 @@ const Orders         = React.lazy(() => import("./pages/Orders"));
 const Customers      = React.lazy(() => import("./pages/Customers"));
 const Products       = React.lazy(() => import("./pages/Products"));
 const Settings       = React.lazy(() => import("./pages/Settings"));
+const Guest          = React.lazy(() => import("./pages/Guest"));
 
 // ➕ Halaman Koleksi Komponen Tugas Pertemuan 10 Anda
 const ComponentsPage = React.lazy(() => import("./pages/ComponentsPage"));
@@ -23,6 +25,12 @@ const Register       = React.lazy(() => import("./pages/auth/Register"));
 const Forgot         = React.lazy(() => import("./pages/auth/Forgot"));
 
 function App() {
+  function RequireAuth({ children }) {
+    const { isAuthenticated } = useAuth();
+    if (!isAuthenticated) return <Navigate to="/login" replace />;
+    return children;
+  }
+
   const errorImg = "/img/error.png";
 
   return (
@@ -35,7 +43,7 @@ function App() {
             Kita masukkan lagi /components ke sini supaya sidebarmu TIDAK HILANG!
            ========================================== */}
         <Route element={<MainLayout />}>
-          <Route path="/"             element={<Dashboard />} />
+          <Route path="/dashboard"    element={<RequireAuth><Dashboard /></RequireAuth>} />
           <Route path="/orders"       element={<Orders />} />
           <Route path="/customers"    element={<Customers />} />
           <Route path="/products"     element={<Products />} />
@@ -56,6 +64,9 @@ function App() {
             <NotFound code="403" message="Forbidden: Anda tidak memiliki izin akses." image={errorImg} />
           }/>
         </Route>
+
+        {/* Public Guest Landing */}
+        <Route path="/" element={<Guest />} />
 
         {/* ==========================================
             🔒 AUTH LAYOUT (Halaman Login, Daftar & Lupa Kata Sandi)

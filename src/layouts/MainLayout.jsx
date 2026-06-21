@@ -1,11 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import { useTheme } from "../context/ThemeContext";
 
 export default function MainLayout() {
-  const { theme } = useTheme();
   return (
-    <div className={`min-h-screen ${theme === "dark" ? "bg-[#040814] text-slate-100" : "bg-slate-100 text-slate-900"}`}>
+    <div className="min-h-screen bg-pink-50 text-slate-900">
       <Sidebar />
 
       {/* Konten utama bergeser ke kanan sebesar lebar sidebar + margin */}
