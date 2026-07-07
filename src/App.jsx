@@ -16,6 +16,10 @@ const Guest          = React.lazy(() => import("./pages/Guest"));
 
 // ➕ Halaman Koleksi Komponen Tugas Pertemuan 10 Anda
 const ComponentsPage = React.lazy(() => import("./pages/ComponentsPage"));
+const Member         = React.lazy(() => import("./pages/Member"));
+const MemberProfile  = React.lazy(() => import("./pages/MemberProfile"));
+const MemberBooking  = React.lazy(() => import("./pages/MemberBooking"));
+const MemberVoucher  = React.lazy(() => import("./pages/MemberVoucher"));
 
 const NotFound       = React.lazy(() => import("./pages/NotFound"));
 const MainLayout     = React.lazy(() => import("./layouts/MainLayout"));
@@ -23,6 +27,7 @@ const AuthLayout     = React.lazy(() => import("./layouts/AuthLayout"));
 const Login          = React.lazy(() => import("./pages/auth/Login"));
 const Register       = React.lazy(() => import("./pages/auth/Register"));
 const Forgot         = React.lazy(() => import("./pages/auth/Forgot"));
+const MemberDashboard= React.lazy(() => import("./pages/MemberDashboard"));
 
 function App() {
   function RequireAuth({ children }) {
@@ -67,6 +72,11 @@ function App() {
 
         {/* Public Guest Landing */}
         <Route path="/" element={<Guest />} />
+        <Route path="/member" element={<Member />} />
+        <Route path="/member/dashboard" element={<RequireAuth><MemberDashboard /></RequireAuth>} />
+        <Route path="/member/profile" element={<RequireAuth><MemberProfile /></RequireAuth>} />
+        <Route path="/member/riwayat-booking" element={<RequireAuth><MemberBooking /></RequireAuth>} />
+        <Route path="/member/voucher" element={<RequireAuth><MemberVoucher /></RequireAuth>} />
 
         {/* ==========================================
             🔒 AUTH LAYOUT (Halaman Login, Daftar & Lupa Kata Sandi)

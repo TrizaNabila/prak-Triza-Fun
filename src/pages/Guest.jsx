@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
-import { MdShoppingCart } from "react-icons/md";
+import { MdShoppingCart, MdLocalOffer } from "react-icons/md";
 import { useAuth } from "../context/AuthContext";
 import products from "../data/Products.json";
 
@@ -43,14 +43,9 @@ export default function Guest() {
               <p className="text-sm font-semibold">Luxx Furniture</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 text-sm">
-            <button className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-slate-700 shadow-sm hover:bg-pink-50">
-              <MdShoppingCart className="text-base" />
-            </button>
-            <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-pink-200 bg-white px-3 py-2 text-pink-700 shadow-sm hover:bg-pink-50">
-              <FaWhatsapp className="text-base text-pink-600" />
-            </a>
-            <button onClick={handleContinue} className="rounded-full bg-pink-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-700">Masuk atau Daftar</button>
+          <div className="flex items-center gap-6 text-sm font-semibold text-slate-700">
+            <button onClick={handleContinue} className="rounded-full border border-orange-200 bg-white px-4 py-2 text-orange-600 transition hover:bg-orange-50">Login</button>
+            <button onClick={() => navigate('/member')} className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-orange-200/40 transition hover:opacity-95">Member</button>
           </div>
         </div>
       </div>
@@ -63,8 +58,7 @@ export default function Guest() {
             <h1 className="mt-4 text-5xl font-extrabold text-slate-900">Bawa Nuansa Modern ke Rumahmu</h1>
             <p className="mt-5 text-lg leading-8 text-slate-600">Temukan furnitur stylish dengan sentuhan pink lembut yang membuat ruang jadi lebih hangat dan elegan. Mulai dari sofa, meja makan, sampai dekorasi custom.</p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <button onClick={() => navigate('/products')} className="rounded-full bg-pink-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-pink-200/50 transition hover:bg-pink-700">Jelajahi Produk</button>
-              <button onClick={handleContinue} className="rounded-full border border-pink-300 bg-white px-6 py-3 text-sm font-semibold text-pink-700 transition hover:bg-pink-50">Login Admin</button>
+              <button onClick={() => navigate('/products')} className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/50 transition hover:opacity-95">Jelajahi Produk</button>
             </div>
           </div>
           <div className="relative overflow-hidden rounded-[32px] bg-white p-6 shadow-[0_40px_120px_rgba(239,68,146,0.14)]">
@@ -166,8 +160,8 @@ export default function Guest() {
                   </div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-4">
-                  <button onClick={() => navigate('/products')} className="rounded-full bg-pink-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-pink-300/40">Lihat Koleksi</button>
-                  <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white">Hubungi WA</a>
+                  <button onClick={() => navigate('/products')} className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-300/40 transition hover:opacity-95">Lihat Koleksi</button>
+                  <a href="https://wa.me/6281234567890" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white px-6 py-3 text-sm font-semibold text-orange-700 transition hover:bg-orange-50">Hubungi WA</a>
                 </div>
               </div>
             </div>
@@ -184,7 +178,7 @@ export default function Guest() {
                 <p className="text-sm uppercase tracking-[0.35em] text-pink-500">Kategori Pilihan</p>
                 <h3 className="mt-3 text-3xl font-bold text-slate-900">Temukan furnitur yang pas untuk setiap ruangan</h3>
               </div>
-              <button onClick={() => navigate('/products')} className="rounded-full bg-pink-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-pink-200/40">Jelajahi semua</button>
+              <button onClick={() => navigate('/products')} className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/40 transition hover:opacity-95">Jelajahi semua</button>
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {categories.slice(0,6).map((c) => (
@@ -209,7 +203,7 @@ export default function Guest() {
               <p className="text-sm uppercase tracking-[0.35em] text-pink-500">Pilihan Editor</p>
               <h2 className="mt-2 text-4xl font-bold text-slate-900">Produk Unggulan</h2>
             </div>
-            <button onClick={() => navigate('/products')} className="text-sm font-semibold text-pink-700 underline">Lihat Semua</button>
+            <button onClick={() => navigate('/products')} className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/40 transition hover:opacity-95">Lihat Semua</button>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {featured.map((p) => (
@@ -219,7 +213,7 @@ export default function Guest() {
                   <p className="text-sm text-pink-600">{p.brand} • {p.category}</p>
                   <h3 className="mt-3 text-lg font-semibold text-slate-900">{p.tittle}</h3>
                   <p className="mt-4 text-lg font-bold text-pink-700">{rupiah(p.price)}</p>
-                  <button onClick={() => navigate('/login')} className="mt-5 w-full rounded-full bg-pink-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-pink-700">Login untuk beli</button>
+                  <button onClick={() => navigate('/login')} className="mt-5 w-full rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/40 transition hover:opacity-95">Login untuk beli</button>
                 </div>
               </div>
             ))}
